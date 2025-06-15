@@ -43,7 +43,7 @@ function App() {
 
   useEffect(() => {
     ICUSegmantation.initialize({
-      locateFile: () => (import.meta.env.PROD ? wasmUrl : localWasmUrl),
+      locateFile: () => (import.meta.env.PROD ? localWasmUrl : localWasmUrl),
     }).then(() => {
       setIsWasmReady(true);
     });
