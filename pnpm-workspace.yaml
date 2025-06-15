@@ -1,0 +1,6 @@
+onlyBuiltDependencies:
+  - core-js
+  - simple-git-hooks
+
+patchedDependencies:
+  '@echogarden/icu-segmentation-wasm': patches/@echogarden__icu-segmentation-wasm.patch

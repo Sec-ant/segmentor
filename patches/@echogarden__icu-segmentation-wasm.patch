@@ -1,0 +1,35 @@
+diff --git a/dist/Exports.d.ts b/dist/Exports.d.ts
+index 8e1dd861773c51ab1f1682ce4494210312b01c8d..143bd12f0cd67fee4031f0aa975d47063c79591d 100644
+--- a/dist/Exports.d.ts
++++ b/dist/Exports.d.ts
+@@ -5,4 +5,4 @@ export declare function createCharacterBreakIterator(text: string, language?: st
+ export declare function createWordBreakIterator(text: string, language?: string): Generator<number, void, unknown>;
+ export declare function createLineBreakIterator(text: string, language?: string): Generator<number, void, unknown>;
+ export declare function createSentenceBreakIterator(text: string, language?: string): Generator<number, void, unknown>;
+-export declare function initialize(): Promise<void>;
++export declare function initialize(args?: unknown): Promise<void>;
+diff --git a/dist/Exports.js b/dist/Exports.js
+index 28354aa103fc1d0c4fdaa9479c7061bf6819bb57..0cf525650b4980e7f42387dcdacf6309104de256 100644
+--- a/dist/Exports.js
++++ b/dist/Exports.js
+@@ -81,16 +81,16 @@ function errorIfNotInitialized() {
+         throw new Error(`WASM module has not been initialized`);
+     }
+ }
+-export async function initialize() {
+-    await getWasmModule();
++export async function initialize(args) {
++    await getWasmModule(args);
+ }
+ let wasmModule;
+-async function getWasmModule() {
++async function getWasmModule(args) {
+     if (wasmModule) {
+         return wasmModule;
+     }
+     const { default: initializer } = await import('../wasm/icu-segmentation.js');
+-    wasmModule = await initializer();
++    wasmModule = await initializer(args);
+     wasmModule._loadInternalICUData();
+     return wasmModule;
+ }

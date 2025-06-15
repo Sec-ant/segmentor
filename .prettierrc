@@ -1,0 +1,10 @@
+{
+  "experimentalTernaries": true,
+  "plugins": [
+    "prettier-plugin-jsdoc",
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "organizeImportsSkipDestructiveCodeActions": true,
+  "tailwindStylesheet": "./src/index.css"
+}
