@@ -1,5 +1,7 @@
 onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
   - core-js
+  - esbuild
   - simple-git-hooks
 
 patchedDependencies:
