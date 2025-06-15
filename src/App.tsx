@@ -84,7 +84,7 @@ function App() {
 
   return (
     <div className="flex h-screen w-screen flex-col gap-8 p-16">
-      <div className="flex shrink-0 gap-8">
+      <div className="flex shrink-0 flex-wrap gap-8">
         <div className="flex gap-2">
           <input
             type="radio"
@@ -127,7 +127,7 @@ function App() {
       <div className="flex min-h-0 grow gap-16">
         <div className="flex h-full min-w-0 shrink grow basis-0">
           <textarea
-            className="w-full rounded-4 p-8 ring-2 ring-neutral-400 focus:ring-neutral-500 focus:outline-0"
+            className="w-full rounded-4 p-8 text-base/relaxed ring-2 ring-neutral-400 focus:ring-neutral-500 focus:outline-0"
             value={text}
             onChange={handleChange}
             rows={10}
@@ -140,17 +140,20 @@ function App() {
             : segments.map((segment, index) => (
                 <span
                   key={index}
-                  className={clsx("mx-2 rounded-2 p-2 ring-1", {
-                    "bg-red-200 ring-red-300": (index * 5) % 9 === 0,
-                    "bg-amber-200 ring-amber-300": (index * 5) % 9 === 1,
-                    "bg-lime-200 ring-lime-300": (index * 5) % 9 === 2,
-                    "bg-emerald-200 ring-emerald-300": (index * 5) % 9 === 3,
-                    "bg-cyan-200 ring-cyan-300": (index * 5) % 9 === 4,
-                    "bg-blue-200 ring-blue-300": (index * 5) % 9 === 5,
-                    "bg-violet-200 ring-violet-300": (index * 5) % 9 === 6,
-                    "bg-fuchsia-200 ring-fuchsia-300": (index * 5) % 9 === 7,
-                    "bg-rose-200 ring-rose-300": (index * 5) % 9 === 8,
-                  })}
+                  className={clsx(
+                    "mx-2 rounded-2 p-2 text-base/relaxed ring-1",
+                    {
+                      "bg-red-200 ring-red-300": (index * 5) % 9 === 0,
+                      "bg-amber-200 ring-amber-300": (index * 5) % 9 === 1,
+                      "bg-lime-200 ring-lime-300": (index * 5) % 9 === 2,
+                      "bg-emerald-200 ring-emerald-300": (index * 5) % 9 === 3,
+                      "bg-cyan-200 ring-cyan-300": (index * 5) % 9 === 4,
+                      "bg-blue-200 ring-blue-300": (index * 5) % 9 === 5,
+                      "bg-violet-200 ring-violet-300": (index * 5) % 9 === 6,
+                      "bg-fuchsia-200 ring-fuchsia-300": (index * 5) % 9 === 7,
+                      "bg-rose-200 ring-rose-300": (index * 5) % 9 === 8,
+                    },
+                  )}
                 >
                   {segment}
                 </span>
