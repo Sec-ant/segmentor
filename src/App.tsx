@@ -8,7 +8,7 @@ import {
   type ChangeEvent,
 } from "react";
 import { useShallow } from "zustand/shallow";
-import wasmUrl from "../node_modules/@echogarden/icu-segmentation-wasm/wasm/icu-segmentation.wasm?url";
+import localWasmUrl from "../node_modules/@echogarden/icu-segmentation-wasm/wasm/icu-segmentation.wasm?url";
 import { useHashStore, useHashStoreHydration } from "./stores/hash";
 import type { SplitMode } from "./stores/segmentor";
 import { useSegmentorStore } from "./stores/segmentor";
@@ -43,7 +43,7 @@ function App() {
 
   useEffect(() => {
     ICUSegmantation.initialize({
-      locateFile: () => wasmUrl,
+      locateFile: () => (import.meta.env.PROD ? wasmUrl : localWasmUrl),
     }).then(() => {
       setIsWasmReady(true);
     });
@@ -121,6 +121,8 @@ function App() {
           />
           <label htmlFor="sentences">Split to sentences</label>
         </div>
+        <div className="grow" />
+        {!isWasmReady && <span className="shrink-0">Loading WASM ...</span>}
       </div>
       <div className="flex min-h-0 grow gap-16">
         <div className="flex h-full min-w-0 shrink grow basis-0">
